@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ImageCropper</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+    
+<body>
+    
+<div class="container">
+    <div>
+
+        <div class="image_uploader">
+            <span>Image Source</span>
+
+            <form name="myForm">
+                <input type="radio" name="radio_check" id="local_upload" >
+                <label for="local_upload">Local</label>
+                <br>
+
+                <input type="radio" name="radio_check" id="remote_upload" >
+                <label for="remote_upload">Remote</label>
+                <br>
+
+                <div class="image_path">
+                    <input type="text" id="image_path_input" disabled>
+                    <input type="file" id="input_file">
+                    <input type="button" id="button_like_input_file" value="Browse..."/>
+                    
+                </div>
+
+                <div class="image_path_remote">
+                    <input type="text" id="image_path_remote" name="image_path_remote">
+                    <input type="button" id="fetch_image_url" contenteditable="true" value="Paste">
+                </div>
+            </form>
+        </div>
+
+
+        <div class="canvas_box">
+            <div>
+
+                <div id="crop_mode">
+                    <span>Target Image</span>
+                    <div>
+                        <label class="switch">
+                            <span>Crop Mode</span>
+                            <input type="checkbox" id="crop_mode_check">
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                </div>
+
+
+                <canvas id="main_canvas">Your computer does not support canvas( I'm so sad...</canvas>
+
+            </div>
+        </div>
+
+
+        <div id="myModal">
+            <div class="modal-content">
+                <canvas id="popup_canvas"></canvas>
+                <div class="popup_buttons">
+                    <button id="btn_cancel">Cancel</button>
+                    <a href="" id="btn_save_as">Save As</a>
+                    <button id="btn_replace">Replace</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+        
+        <!--Image Cropper
+
+    Це має бути веб-сторінка, котра дає змогу crop image: тобто вирізати/обрізати певну ділянку/участок цільової картинки.
+
+    Повинна бути реалізована можливість завантажити картинку локально (з свого комп'ютера) і з інтернету (вказуючи URL картинки).
+
+    Добавити валідацію чи обмеження на вибір/завантаження тільки графічних файлів (картинок) + валідацію URL також. Дозволити декілька популярних форматів як .jpg, .png, і т.п..
+
+    Кнопка Browse працює інтуїтивно і дозволяє вибрати картинку на вашому комп'ютері. Кнопка Paste вставляє в поле вводу (input) поруч скопійовану URL з буферу обміну. В обох випадках (local or remote) поле вводу (input) є disabled і призначений тільки для відображення шляху (path) до оригінальної картинки.
+
+    Цільова картинка повинна завантажуватися в канвас (HTML5 тег) фіксованих розмірів, напр. 500 х 500 (up to you).
+
+    Картинку ні в якому разі не "розтягувати" по всій площі канваса, а масштабувати.
+
+    * В випадку картинки високого розширення збільшити розміри канваса пропорціонально: в міру, визначивши граничні (макс) розміри канваса заздалегідь.
+
+    Після завантаженої картинки Crop mode повинен активізуватися, а елемент управління (перемикач) стати On.
+
+    Цей режим дозволяє вирізати певну ділянку картинки за допомогою мишки.
+
+    В режимі Crop курсор змінює свій вигляд на crosshair при наведенні його над (over) канвасом.
+
+    Cropping активізується натисканням і утримання лівої кнопки миші, під час утримання якої відображається (Crop zone) зона виділення (прозорий прямокутник з dashed рамкою), котра змінює свої розміри і орієнтацію відносно положення курсора до точки початкового вибору (в точці де ліва кнопка миші була затиснута).
+
+    Для наочного розуміння як повинна відпрацьовувати Crop zone добре підходить Windows -> Paint -> Select (Rectangle selection).
+
+    Після того як лівою кнопкою миші була виділена Crop zone, відпустивши Crop zone повинна пропасти як елемент (навідміну від Rectangle selection в Paint) і в той же час з'явитися модальне вікно (popup).
+
+    Це модальне вікно повинно затемнювати всю сторінку, окрім себе, сірим фоном, і містити свій канвас з вже вирізаною, раніше виділеною, картинкою - cropped image.
+
+    Тут повинні бути доступні три кнопки з відповіною логікою. Кнопка Cancel відмінює поточний вибір (Cropped image) і просто закриває цей popup. Кнопка Replace підтверджує поточний вибір і замінює ним оригінальну картинку на головному канвасі сторінки, і закриває цей popup. Кнопка Save As працює інтуїтивно і дозволяє зберегти Cropped image локально, після чого закриває цей popup.
+
+    Стилізувати цю сторінку прийдеться Вам, як то кажуть: up to you (потрібно мати хороший смак і почуття міри).
+
+    Код пишемо на чистому JavaScript (ES5) + HTML5.-->
+        
+        
+<script src="js/app.js"></script>
+</body>
+</html>
